@@ -1,5 +1,6 @@
 package com.example.elyseturner.startatnight;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.res.Resources;
@@ -54,7 +55,14 @@ public class MainActivity extends Activity implements AppCompatCallback {
 
         //Finally, let's add the Toolbar
         Toolbar toolbar= (Toolbar) findViewById(R.id.my_awesome_toolbar);
+
         delegate.setSupportActionBar(toolbar);
+
+        delegate.getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        toolbar.setTitle("Stars at Night");
+
+
     }
 
 
@@ -82,7 +90,12 @@ public class MainActivity extends Activity implements AppCompatCallback {
 
     @Click(R.id.openingButton)
     void myButtonWasClicked() {
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
+        builder.setTitle("My new appcompat dialog droids");
+        builder.setMessage("zombie apocalypse");
+        builder.setPositiveButton("OK", null);
+        builder.setNegativeButton("Cancel", null);
+        builder.show();
 
     }
 }
