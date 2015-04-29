@@ -44,7 +44,7 @@ public class MainActivity extends Activity implements AppCompatCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //let's create the delegate, passing the activity at both arguments (Activity, AppCompatCallback)
+        //making a new delegate and passing it the arguments of the activity and the callback
         delegate = AppCompatDelegate.create(this, this);
 
         //we need to call the onCreate() of the AppCompatDelegate
@@ -53,18 +53,16 @@ public class MainActivity extends Activity implements AppCompatCallback {
         //we use the delegate to inflate the layout
         delegate.setContentView(R.layout.activity_main);
 
-        //Finally, let's add the Toolbar
+        //Adding the toolbar in
         Toolbar toolbar= (Toolbar) findViewById(R.id.my_awesome_toolbar);
 
         delegate.setSupportActionBar(toolbar);
 
-        delegate.getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        toolbar.setTitle("Stars at Night");
-
+//        delegate.getSupportActionBar().setDisplayShowHomeEnabled(true);
+//
+//        toolbar.setTitle("Stars at Night");
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,11 +88,23 @@ public class MainActivity extends Activity implements AppCompatCallback {
 
     @Click(R.id.openingButton)
     void myButtonWasClicked() {
+
+        //make a new builder giving it the activity and the style
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.MyAlertDialogStyle);
+
+        //set the title of the dialog
         builder.setTitle("My new appcompat dialog droids");
+
+        //the stuff you want to say
         builder.setMessage("zombie apocalypse");
+
+        //get that ok button
         builder.setPositiveButton("OK", null);
+
+        //get that cancel button
         builder.setNegativeButton("Cancel", null);
+
+        //show that dialog!
         builder.show();
 
     }

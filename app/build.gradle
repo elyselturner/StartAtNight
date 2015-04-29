@@ -12,6 +12,7 @@ buildscript {
 
 apply plugin: 'android-apt'
 
+//needed to add this in because
 apt {
     arguments {
         resourcePackageName android.defaultConfig.applicationId
