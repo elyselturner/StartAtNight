@@ -9,8 +9,15 @@ buildscript {
     }
 }
 
-apply plugin: 'android'
+
 apply plugin: 'android-apt'
+
+apt {
+    arguments {
+        resourcePackageName android.defaultConfig.applicationId
+        androidManifestFile variant.outputs[0].processResources.manifestFile
+    }
+}
 
 android {
     compileSdkVersion 22

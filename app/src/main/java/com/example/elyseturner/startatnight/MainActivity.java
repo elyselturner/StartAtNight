@@ -1,12 +1,20 @@
 package com.example.elyseturner.startatnight;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatCallback;
+import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.view.ActionMode;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.support.v7.app.AlertDialog;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -14,15 +22,39 @@ import org.androidannotations.annotations.ViewById;
 
 
 @EActivity(R.layout.activity_main)
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity implements AppCompatCallback {
 
     @ViewById
     Button openingButton;
 
     @Override
+    public void onSupportActionModeStarted(ActionMode mode) {
+        //let's leave this empty, for now
+    }
+
+    @Override
+    public void onSupportActionModeFinished(ActionMode mode) {
+        // let's leave this empty, for now
+    }
+
+    private AppCompatDelegate delegate;
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        //let's create the delegate, passing the activity at both arguments (Activity, AppCompatCallback)
+        delegate = AppCompatDelegate.create(this, this);
+
+        //we need to call the onCreate() of the AppCompatDelegate
+        delegate.onCreate(savedInstanceState);
+
+        //we use the delegate to inflate the layout
+        delegate.setContentView(R.layout.activity_main);
+
+        //Finally, let's add the Toolbar
+        Toolbar toolbar= (Toolbar) findViewById(R.id.my_awesome_toolbar);
+        delegate.setSupportActionBar(toolbar);
     }
 
 
@@ -50,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Click(R.id.openingButton)
     void myButtonWasClicked() {
+
 
     }
 }
