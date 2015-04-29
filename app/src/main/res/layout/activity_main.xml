@@ -3,15 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
-    <android.support.v7.widget.Toolbar
+    android:orientation="vertical"
+    android:background="@color/icons">
 
+    <android.support.v7.widget.Toolbar
         android:id="@+id/my_awesome_toolbar"
         android:layout_height="@dimen/abc_action_bar_default_height_material"
         android:layout_width="match_parent"
         android:minHeight="@dimen/abc_action_bar_default_height_material"
+        android:title="@color/icons"
         android:background="?attr/colorPrimary"
-
         />
 
     <TextView android:text="@string/hello_world"
@@ -22,7 +23,8 @@
        android:id="@+id/openingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="get me the sky"
+        android:textColor="@color/icons"
+        android:text="@string/starButton"
         android:onClick="sendMessage"/>
 
 </LinearLayout>
